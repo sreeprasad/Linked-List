@@ -30,21 +30,48 @@ public class SList{
    	}
  
  
-	public void removeDuplicates(){
-		SListNode justBeforeCurrent = getHead();
-		SListNode current = head.getNext();
+	public void removeDuplicatesUsingHashTables(){
 		Hashtable h = new Hashtable();
+		SListNode current = getHead().getNext();
+		SListNode previous =null;
 		while(current!=head){
-			//if(!h.get(current.getElement())){
-				if(!h.containsKey(current.getElement())){
-				h.put(current.getElement(),true);
-				current=current.getNext();
-				justBeforeCurrent=justBeforeCurrent.getNext();
+			if(h.containsKey(current.getElement())){
+				previous.setNext(current.getNext());
 			}else{
-				current=current.getNext();
-				justBeforeCurrent.setNext(current);
+				h.put(current.getElement(),true);
+				previous=current;
 			}
-  		}
+			current=current.getNext();
+		}	
+		
+	}
+	
+	
+	
+	public void removeDuplicatesWithoutBufferUsingRunners(){
+ 		SListNode previous = getHead();
+		SListNode current = previous.getNext();
+		while(current!=head){
+			SListNode runner = getHead().getNext();
+			while(runner!=current){
+		 			int temp= ((Comparable) runner.getElement()).compareTo(current.getElement());
+					if(temp==0){
+ 					SListNode node = current.getNext();
+					previous.setNext(node);
+					current=node;
+					break;
+				}
+					runner=runner.getNext();	
+			}
+			if(current==runner){
+				previous=current;
+				current=current.getNext();
+ 
+			}
+			
+		}
+		
+		
 		
 	}
 	
