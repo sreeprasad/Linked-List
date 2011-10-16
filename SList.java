@@ -98,6 +98,31 @@ public class SList{
 		
 	}
 	
+	/* CODE::
+	* current is head.next
+	* move current n nodes forward
+	* nodetofind is head.next
+	* iterate both nodetofind and current untill current== head
+	* nodetofind is now n nodes from last
+	* return node.element
+	*/
+	
+	public Object nthNodeFromLast(int n){
+		
+		SListNode current = getHead().getNext();
+		for(int i=0;i<n;i++){
+			current=current.getNext();
+		}
+		SListNode nodeToFind =getHead().getNext();
+		while(current!=head){
+			nodeToFind=nodeToFind.getNext();
+			current=current.getNext();
+		}
+		return nodeToFind.getElement();
+	}
+	
+	
+	
 	public String toString(){
 		String result ="";
 		SListNode current = getHead().getNext();
