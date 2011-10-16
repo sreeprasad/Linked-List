@@ -48,6 +48,17 @@ public static void main(String abc[]){
 		System.out.println("3 node from last is ");
 		System.out.println((s.nthNodeFromLast(3)).toString());
 		
+		s.insertInFront(new Integer(16));
+
+		/* all values */
+		System.out.println(s.toString());
+		
+		/* delete a node in the middle of a single linked list, given only access to that node. */
+		s.deleteFromMiddleGivenAccessOnlyToMidde(s.getMiddle());
+		
+		/* all values */
+ 		System.out.println(s.toString());
+	
 	}
 
 }
