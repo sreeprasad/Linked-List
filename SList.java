@@ -29,7 +29,13 @@ public class SList{
 		head.setNext(node);
    	}
  
- 
+ 	/* remvoving duplicates using hashtables 
+	* code:
+	*  if hashtable has no entry add key as node.element and value as true
+	*  if hashtable has entry  move previous to current node's next node
+	*  repeat above 2 steps untill current == head (because this is circularly linked singly linked list)
+	*/
+	
 	public void removeDuplicatesUsingHashTables(){
 		Hashtable h = new Hashtable();
 		SListNode current = getHead().getNext();
@@ -46,7 +52,24 @@ public class SList{
 		
 	}
 	
-	
+	/* removing duplicates without hashtable
+	* i dont know how to to write this in words but this is the basic idea. 
+	* code::
+	* previous = head and current = previous.next
+	* iterate untill current == head ( because this is circular single list)
+	* 	runner = head.next
+	* 	iterate untill runner ==current
+	*		if runner.element == current.element
+	*			temp = current.next
+	*			previous.next=temp
+	*			current=temp
+	*			break from iteration
+	*		runner=runner.next
+	*		**** end of inner loop ****
+	*  if runner == current
+	* 		previous =current
+	*       current=current.next
+	*/
 	
 	public void removeDuplicatesWithoutBufferUsingRunners(){
  		SListNode previous = getHead();
