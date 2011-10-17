@@ -58,6 +58,35 @@ public static void main(String abc[]){
 		
 		/* all values */
  		System.out.println(s.toString());
+		
+		
+		SList a = new SList();
+		SList b = new SList();
+		a.insertInFront(new Integer(5));
+		a.insertInFront(new Integer(1));
+		a.insertInFront(new Integer(3));
+		
+		b.insertInFront(new Integer(2));
+		b.insertInFront(new Integer(9));
+		b.insertInFront(new Integer(5));
+		System.out.println("a is value is "+a.toString());
+		System.out.println("b is value is "+b.toString());
+		
+	  SList sum=	s.add(a,b);
+	/* since result will be reverse order i reverse list and show */
+	sum.reverse(sum.getHead());
+	System.out.println("sum is "+sum.toString());
+ 		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 	
 	}
 
