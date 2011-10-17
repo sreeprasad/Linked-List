@@ -151,6 +151,59 @@ public class SList{
 		return size;
 	}
 	
+	/* Add 2 list
+	* curent1 = a.head.next
+	* curent2 = b.head.next
+	* carry=0
+	* newSum = carry+current1+current2
+	* if(newSum>10) sum.insert(newSum-10) and carry =1
+	* else sum.insert(newSum) and carry=0
+	* repeat above 3 steps untill current1.next!=a.head and current2.next!=b.head( this is bec a and b are circularly linked list)
+	*/
+	public SList add(SList a,SList b){
+		
+		SList sum = new SList();
+		
+		SListNode current1= a.getHead().getNext();
+		SListNode current2= b.getHead().getNext();
+ 		
+		int carry=0;
+		int newSum=0;
+		while ((current1!=a.getHead())&& (current2!=b.getHead())){
+			
+			System.out.println("adding "+current1.getElement().toString()+" with "+ current2.getElement().toString()+ " with carry "+ carry);
+			newSum = carry+(Integer)current1.getElement()+(Integer)current2.getElement();
+ 			if(newSum>=10){
+				sum.insertInFront(new Integer(newSum)-10);
+				carry=1;
+			}else{
+			sum.insertInFront(new Integer(newSum));
+				carry=0; 
+			}
+		
+			current1=current1.getNext();
+			current2=current2.getNext();
+			System.out.println("current1' next is head is "+(current1.getNext()==a.getHead()) +" and current2's next is head is " + (current2.getNext()==b.getHead()));
+ 		
+		}
+  		return (sum);
+	}
+	
+	public SListNode reverse(SListNode current ){
+		if(current.getNext()==getHead()){
+			getHead().setNext(current);
+			return current;
+		}
+	 
+		SListNode second = current.getNext();
+ 		current.setNext(null);
+		SListNode reverseListNode = reverse(second);
+		second.setNext(current);
+		return reverseListNode;
+	}
+	 
+	
+	
 	public String toString(){
 		String result ="";
 		SListNode current = getHead().getNext();
